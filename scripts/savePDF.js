@@ -18,7 +18,6 @@ module.exports = async ({ outfile }) => {
   await page.emulateMedia("print");
 
   await page.pdf({
-    pageRanges: "1",
     path: outfile,
     format: "letter",
     scale: 0.72,
@@ -28,6 +27,7 @@ module.exports = async ({ outfile }) => {
       left: "0.38in",
       right: "0.38in",
     },
+    printBackground: true,
   });
 
   await Promise.all([browser.close(), server.stop()]);
